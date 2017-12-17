@@ -23,7 +23,9 @@ public class LoaderCreator {
         final AVLoadingIndicatorView loadingIndicatorView = new AVLoadingIndicatorView(context);
         if (LOADING_MAP.get(type) == null) {
             final Indicator indicator = getIndicator(type);
-            LOADING_MAP.put(type, indicator);
+            if (indicator != null) {
+                LOADING_MAP.put(type, indicator);
+            }
         }
         loadingIndicatorView.setIndicator(LOADING_MAP.get(type));
         return loadingIndicatorView;
@@ -42,6 +44,7 @@ public class LoaderCreator {
         final StringBuilder drawableClassName = new StringBuilder();
         if (!name.contains(".")) {
             final String defaultPackageName = AVLoadingIndicatorView.class.getPackage().getName();
+            // 这一个库是通过反射类名来进行获取实例的
             drawableClassName.append(defaultPackageName)
                     .append(".indicators")
                     .append(".");

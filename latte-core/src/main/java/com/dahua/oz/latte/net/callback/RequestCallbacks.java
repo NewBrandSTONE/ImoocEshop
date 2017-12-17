@@ -3,7 +3,6 @@ package com.dahua.oz.latte.net.callback;
 import com.dahua.oz.latte.ui.LatteLoader;
 import com.dahua.oz.latte.ui.LoaderStyle;
 
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,14 +49,7 @@ public class RequestCallbacks implements Callback<String> {
             }
         }
 
-        if (LOADER_STYLE != null) {
-            HANDLER.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    LatteLoader.stopLoading();
-                }
-            }, 1000);
-        }
+        stopLoading();
     }
 
     @Override
@@ -68,6 +60,22 @@ public class RequestCallbacks implements Callback<String> {
 
         if (IREQUEST != null) {
             IREQUEST.onRequestEnd();
+        }
+
+        stopLoading();
+    }
+
+    /**
+     * 停止Loading
+     */
+    private void stopLoading() {
+        if (LOADER_STYLE != null) {
+            HANDLER.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    LatteLoader.stopLoading();
+                }
+            }, 1000);
         }
     }
 }

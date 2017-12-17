@@ -20,15 +20,12 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
- * <一句话简述功能>
- * <功能详细描述>
- *
  * @author gaohuang_yangzi@dahuatech.com
  * @date 2017/11/6
  * @desc ${CURSOR}
  */
 
-public interface  RestService {
+public interface RestService {
 
     @GET
     Call<String> get(@Url String url, @QueryMap Map<String, Object> params);
@@ -36,6 +33,16 @@ public interface  RestService {
     @FormUrlEncoded
     @POST
     Call<String> post(@Url String url, @FieldMap Map<String, Object> params);
+
+    /**
+     * 直接上传原始数据
+     *
+     * @param url  接口地址
+     * @param body 发送的内容
+     * @return 服务器返回的数据
+     */
+    @POST
+    Call<String> postRaw(@Url String url, @Body RequestBody body);
 
     @DELETE
     Call<String> delete(@Url String url, @QueryMap Map<String, Object> params);

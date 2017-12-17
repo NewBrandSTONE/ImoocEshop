@@ -8,6 +8,7 @@ import com.dahua.oz.latte.net.callback.IReqeust;
 import com.dahua.oz.latte.net.callback.ISuces;
 import com.dahua.oz.latte.ui.LoaderStyle;
 
+import java.io.File;
 import java.util.WeakHashMap;
 
 import okhttp3.MediaType;
@@ -33,6 +34,7 @@ public class RestClientBuilder {
     private RequestBody mBody;
     private Context mContext;
     private LoaderStyle mLoaderStyle;
+    private File mFile;
 
     RestClientBuilder() {
     }
@@ -49,6 +51,16 @@ public class RestClientBuilder {
 
     public final RestClientBuilder params(String key, Object value) {
         PARAMS.put(key, value);
+        return this;
+    }
+
+    public final RestClientBuilder file(File file) {
+        this.mFile = file;
+        return this;
+    }
+
+    public final RestClientBuilder file(String filePath) {
+        this.mFile = new File(filePath);
         return this;
     }
 
@@ -93,7 +105,7 @@ public class RestClientBuilder {
     public final RestClient build() {
         return new RestClient(mUrl, PARAMS,
                 mIRequest, mIError, mIFailure,
-                mISuccess, mBody, mLoaderStyle, mContext);
+                mISuccess, mBody, mLoaderStyle, mContext, mFile);
     }
 
 }
