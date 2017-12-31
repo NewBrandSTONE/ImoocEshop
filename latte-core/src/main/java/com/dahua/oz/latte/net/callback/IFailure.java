@@ -11,7 +11,7 @@ package com.dahua.oz.latte.net.callback;
 
 public interface IFailure {
     /**
-     * @param errorMsg 错误信息
+     * 失败
      */
-    void onFailue(String errorMsg);
+    void onFailue();
 }

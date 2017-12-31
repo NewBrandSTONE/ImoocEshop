@@ -42,13 +42,12 @@ public class ExampleDelegate extends LatteDelegate {
                 .success(new ISuces() {
                     @Override
                     public void onSuccess(String response) {
-                       // Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
                     }
                 })
                 .failure(new IFailure() {
                     @Override
-                    public void onFailue(String errorMsg) {
-                        Log.d(TAG, "onFailue: " + errorMsg);
+                    public void onFailue() {
                     }
                 })
                 .error(new IError() {

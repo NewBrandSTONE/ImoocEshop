@@ -7,6 +7,7 @@ import com.dahua.oz.latte.net.callback.IFailure;
 import com.dahua.oz.latte.net.callback.IReqeust;
 import com.dahua.oz.latte.net.callback.ISuces;
 import com.dahua.oz.latte.net.callback.RequestCallbacks;
+import com.dahua.oz.latte.net.download.DownloadHandler;
 import com.dahua.oz.latte.ui.LatteLoader;
 import com.dahua.oz.latte.ui.LoaderStyle;
 
@@ -29,6 +30,9 @@ public class RestClient {
     private final String URL;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final IReqeust IREQUEST;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final IError IERROR;
     private final IFailure IFAILURE;
     private final ISuces ISUCCESS;
@@ -46,7 +50,10 @@ public class RestClient {
                       RequestBody body,
                       LoaderStyle loaderStyle,
                       Context context,
-                      File file) {
+                      File file,
+                      String downloadDir,
+                      String extension,
+                      String name) {
         this.URL = url;
         PARAMS.putAll(params);
         this.IREQUEST = irequest;
@@ -57,6 +64,9 @@ public class RestClient {
         this.LOADER_STYLE = loaderStyle;
         this.CONTEXT = context;
         this.FILE = file;
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSION = extension;
+        this.NAME = name;
     }
 
     public static RestClientBuilder builder() {
@@ -162,4 +172,12 @@ public class RestClient {
         request(HttpMethod.DELETE);
     }
 
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, IREQUEST, DOWNLOAD_DIR, EXTENSION,
+                NAME, IERROR, IFAILURE, ISUCCESS).handleDownload();
+    }
 }
