@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.dahua.oz.imooceshop", appContext.getPackageName());
+         assertEquals("com.dahua.oz.imooceshop", appContext.getPackageName());
     }
 }

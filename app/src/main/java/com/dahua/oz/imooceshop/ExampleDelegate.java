@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dahua.oz.latte.delegates.LatteDelegate;
 import com.dahua.oz.latte.net.RestClient;
@@ -38,11 +39,11 @@ public class ExampleDelegate extends LatteDelegate {
     private void testRestClient() {
         RestClient.builder()
                 .loader(getContext())
-                .url("http://news.baidu.com")
+                .url("http://127.0.0.1/index")
                 .success(new ISuces() {
                     @Override
                     public void onSuccess(String response) {
-                        // Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                         Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
                     }
                 })
                 .failure(new IFailure() {
