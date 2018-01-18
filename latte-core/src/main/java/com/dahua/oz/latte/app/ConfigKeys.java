@@ -9,12 +9,12 @@ package com.dahua.oz.latte.app;
  * @desc 唯一的单例模式，并且只能初始化一次
  */
 
-public enum ConfigType {
+public enum ConfigKeys {
     // 网络请求的域名
     API_HOST,
     APPLICATION_CONTEXT,
     // 初始化是否完成
     CONFIG_READY,
-    ICON
-
+    ICON,
+    INTERCEPTOR
 }

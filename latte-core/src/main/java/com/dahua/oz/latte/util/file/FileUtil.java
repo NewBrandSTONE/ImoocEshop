@@ -232,7 +232,7 @@ public class FileUtil {
             fos = new FileOutputStream(file);
             bos = new BufferedOutputStream(fos);
 
-            byte data[] = new byte[1024 * 4];
+            byte []data = new byte[1024 * 4];
 
             int count;
             while ((count = bis.read(data)) != -1) {
