@@ -2,6 +2,7 @@ package com.dahua.oz.imooceshop;
 
 import com.dahua.oz.latte.activities.ProxyActivity;
 import com.dahua.oz.latte.delegates.LatteDelegate;
+import com.dahua.oz.latte.ec.launcher.LauncherDelegate;
 
 /**
  * <一句话简述功能>
@@ -14,6 +15,6 @@ public class MainActivity extends ProxyActivity {
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new ExampleDelegate();
+        return new LauncherDelegate();
     }
 }
